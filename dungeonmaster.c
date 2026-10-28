@@ -5,28 +5,32 @@
 typedef struct{
 	char name[50];
 	char id[10];
-	char description[200];		
+	char description[300];		
 } Room; 
 
 
 
 int main(){
 	FILE *lineP = fopen("dungeonRoomList_large.txt", "r");
-	char lineB[100];
+	char lineB[900];
 	while(fgets(lineB,sizeof(lineB),lineP) != NULL){
 	
-	printf("%s",lineB);
+	printf("\n%s",lineB);
 	char splitBy[] = ":";
 	char *tok = strtok(lineB,splitBy);
 	printf("tok one:%s\n",tok);
-	if(strcpy("Room Name",tok)){
+	if(strcmp("Room Name",tok)==0){
 		tok = strtok(NULL,splitBy);
 		printf("tok 2?:%s\n",tok);
 		}
-	//if(strcmp("Room Name",tok)){
-	//tok = strtok(NULL, splitBy);
-	//printf("%s",tok);
-	//}
+	else if(strcmp("Room Code",tok)==0){
+		tok = strtok(NULL,splitBy);
+		printf("tok 2?:%s\n",tok);
+	}
+	else if(strcmp("Room Description",tok)==0){
+		tok = strtok(NULL,splitBy);
+		printf("\ntok 2?:%s\n",tok);
+	}
 	//printf("%s",lineB);
 	//printf("%s\n",tok);
 	
@@ -34,4 +38,5 @@ int main(){
 
 return 0;
 }
+
 
